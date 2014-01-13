@@ -1,0 +1,4 @@
+<!-- BEGIN: MAIN -->
+{SHOP_COUNTDEC}<br />
+{SHOP_TOTALDEC}
+<!-- END: MAIN -->
