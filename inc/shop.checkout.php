@@ -15,10 +15,10 @@
  */
 defined('COT_CODE') or die('Wrong URL');
 
-require_once cot_incfile('users', 'module');
-
 $mskin = cot_tplfile(array('shop', 'checkout'), 'plug');
 $t = new XTemplate($mskin);
+
+require_once cot_incfile('users', 'module');
 
 $transfered = false;
 ($shop['count'] < 1) && cot_error('error_emptycart');
@@ -173,6 +173,13 @@ if ($a == 'add')
 			$rsubject = $L['user_order_title'];
 			$rbody = sprintf($L['user_order'], $payername, $shop['total'], $payeremail, $payeraddress, $payerphone, $payerother);
 			cot_mail($payeremail, $rsubject, $rbody);
+			
+			/* === Hook === */
+			foreach (cot_getextplugins('hook2') as $pl)
+			{
+			    include $pl;
+			}
+			/* ===== */
 		}
 		///
 		unset($shop);
@@ -204,6 +211,14 @@ if ($transfered == false)
 		'SHOP_ORDER_PAYERTOTAL' => cot_format_money($shop['total'], $shopcurr),
 		'SHOP_ORDER_PAYERTOTAL_DEF' => cot_format_money($shop['total'], $shopdefcurr)
 	));
+	
+	/* === Hook === */
+	foreach (cot_getextplugins('hook1') as $pl)
+	{
+	    include $pl;
+	}
+	/* ===== */
+	
 	$t->parse('MAIN.FORM');
 }
 elseif ($transfered && $cfg['plugin']['shop']['testmode'])

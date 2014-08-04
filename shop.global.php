@@ -68,20 +68,32 @@ $shop['currency'] = ($shopxcurr) ? $shopxcurr : $shop['currency'];
 $shopcurr = ($shop['currency'] && isset($shopconv[$shop['currency']])) ? $shop['currency'] : $shopdefcurr;
 
 $shopchanged = false;
+
+if ((int)$buyid > 0 || (int)$unbuyid > 0)
+{	
+	require_once cot_incfile('page', 'module');
+	$shopid = ((int)$buyid > 0) ? (int)$buyid : (int)$unbuyid;
+	$sql = $db->query("SELECT * FROM $db_pages WHERE page_id = '" . (int)$shopid . "' LIMIT 1");
+	$rpage_array = $sql->fetch();	
+
+	$price = (float)$rpage_array[$shopcfg['price']];
+	$price = ((float)$price > 0) ? $price : 0;
+}
+/* === Hook === */
+foreach (cot_getextplugins('shop.global') as $pl)
+{
+	include $pl;
+}
+/* ===== */
 if ((int)$buyid > 0)
 {
-	require_once cot_incfile('page', 'module');
-	$sql = $db->query("SELECT * FROM $db_pages WHERE page_id = '" . (int)$buyid . "' LIMIT 1");
-	$rpage_array = $sql->fetch();
+
 	if ($rpage_array['page_id'] > 0 && $rpage_array[$shopcfg['instock']])
 	{
-		$price = (float)$rpage_array[$shopcfg['price']];
-		$price = ((float)$price > 0) ? $price : 0;
-
 		$shop['shopping'][$buyid]['count'] = (isset($shop['shopping'][$buyid])) ? $shop['shopping'][$buyid]['count'] + $scount : $scount;
 		$shop['shopping'][$buyid]['price'] = $price;
 		$shop['shopping'][$buyid]['desc'] = $sdesc;
-		$shop['shopping'][$buyid]['total'] += $price * $scount;
+		$shop['shopping'][$buyid]['total'] = $price * $shop['shopping'][$buyid]['count'];
 		$shopchanged = true;
 	}
 }
@@ -90,7 +102,7 @@ if ((int)$unbuyid > 0)
 	if ((int)($shop['shopping'][$unbuyid]['count'] - $scount > 0))
 	{
 		$shop['shopping'][$unbuyid]['count'] = $shop['shopping'][$unbuyid]['count'] - $scount;
-		$shop['shopping'][$buyid]['total'] -= $shop['shopping'][$buyid]['price'] * $scount;
+		$shop['shopping'][$unbuyid]['total'] = $price * $shop['shopping'][$unbuyid]['count'];
 	}
 	else
 	{

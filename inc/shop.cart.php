@@ -19,18 +19,27 @@ if ($a == 'clear')
 }
 if ($a == 'update')
 {
-	$shopcount = cot_import('shopcount', 'P', 'ARR');
-	$shopdesc = cot_import('shopdesc', 'P', 'ARR');
+	$shopcount = cot_import('shopcount', 'R', 'ARR');
+	$shopdesc = cot_import('shopdesc', 'R', 'ARR');
 	foreach($shop['shopping'] as $key => $row)
 	{
 		$t_count = (int)cot_import($shopcount[$key], 'D', 'INT');
 		$t_desc = (int)cot_import($shopdesc[$key], 'D', 'TXT');
+
+		/* === Hook === */
+		foreach (cot_getextplugins('shop.changecount') as $pl)
+		{
+			include $pl;
+		}
+		/* ===== */
+
 		if($t_count < 1)
 		{
 			unset($shop['shopping'][$key]);
 		}
 		else
 		{
+
 			$shop['shopping'][$key]['count'] = $t_count;
 			$shop['shopping'][$key]['desc'] = $t_desc;
 			$shop['shopping'][$key]['total'] = $t_count * (float)$shop['shopping'][$key]['price'];
