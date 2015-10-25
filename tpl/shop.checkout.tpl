@@ -36,6 +36,44 @@
 						<td>{PHP.L.shop_total}:</td>
 						<td>{SHOP_ORDER_PAYERTOTAL} USD</td>
 					</tr><!-- ENDIF -->
+					<!-- BEGIN: DELIVERIES -->			
+					<tr>
+						<td>{PHP.L.shop_delivery}:</td>
+						<td>
+							<!-- BEGIN: ROWS -->
+							<div>
+								{SHOP_DELIVERY_RADIO} <!-- IF {SHOP_DELIVERY_PRICE_NUM} -->({SHOP_DELIVERY_PRICE})<!-- ENDIF -->
+								<!-- IF {SHOP_DELIVERY_DESC} -->
+								<p>{SHOP_DELIVERY_DESC}</p>
+								<!-- ENDIF -->
+							</div>
+							<!-- END: ROWS --> 
+							<!-- BEGIN: NOROWS -->
+							<p>{PHP.L.shop_no_deliveries}</p>
+							<!-- END: NOROWS --> 
+
+						</td> 
+					</tr>
+					<!-- END: DELIVERIES --> 			
+					<!-- BEGIN: PAYMENTS -->
+					<tr>
+						<td>{PHP.L.shop_payment}:</td>
+						<td>  	
+							<!-- BEGIN: ROWS -->
+							<div>
+								{SHOP_PAYMENT_RADIO}
+								<!-- IF {FORM_PAYMENT_DESC} -->
+								<p>{FORM_PAYMENT_DESC}</p>
+								<!-- ENDIF -->
+							</div>
+							<!-- END: ROWS --> 
+							<!-- BEGIN: NOROWS -->
+							<p>{PHP.L.shop_no_payments}</p>
+							<!-- END: NOROWS --> 
+
+						</td> 
+					</tr>
+					<!-- END: PAYMENTS --> 							
 					<tr>
 						<td colspan="2" class="valid"><button name="rpublish" type="submit">{PHP.L.shop_checkout}</button></td>
 					</tr>

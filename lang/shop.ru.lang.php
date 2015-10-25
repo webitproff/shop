@@ -100,6 +100,8 @@ $L['error_emptycart'] = "Ваша корзина пуста";
 $L['error_emptyemail'] = "Введите E-mail";
 $L['error_emptyname'] = "Введите имя";
 $L['error_emptyphone'] = "Введите телефон";
+$L['error_emptydelivery'] = "Укажите способ доставки";
+$L['error_emptypayment'] = "Укажите вид платежа";
 
 /**
  * Tools
@@ -133,32 +135,58 @@ $L['shop_order_info'] = "Информация о заказе";
 
 $L['shop_config'] = "Настройки магазина";
 
+$L['shop_delivery'] = "Способ доставки";
+$L['shop_deliveries'] = "Способы доставки";
+$L['shop_no_deliveries']	= "Нет доступных способов доставки";
+$L['shop_delivery_prices'] = "Цены на доставку";
+$L['shop_payment']	= "Способ оптаты";
+$L['shop_payments']	= "Способы оптаты";
+$L['shop_no_payments']	= "Нет доступных способов оптаты";
+$L['shop_driver']	= "Обработчик (код приложения)";
+$L['shop_error_nodeliveries']	= "Отсутствуют возможные способы доставки.";
+$L['shop_min_price'] = "Минимальная цена покупок";
+$L['shop_delivery_sum'] = "Сумма доставки";
+$L['shop_percent'] = "Процент от покупок";
+
 /**
  * Messages
  */
 
 $L['new_order_title'] = 'Новый заказ';
-$L['new_order'] = '
+$L['new_order_mail'] = '
 Поступил новый заказ
-Заказчик: %1$s
-Сумма: %2$s бел.руб.
-E-mail: %3$s
-Адрес: %4$s
-Телефон: %5$s
-%6$s
-Подробно: %7$s
+Номер заказа: {$id}
+Заказчик: {$payername}
+E-mail: {$payeremail}
+Адрес: {$payeraddr}
+Телефон: {$payerphone}
+{$payerother}
+Описание заказа:
+{$orderinfo}
+Сумма: {$total}
+Способ оплаты: {$payment}
+Способ доставки: {$delivery} ({$delivery_count})
+Подробно: {$link}
 ';
 
 $L['user_order_title'] = 'Ваш заказ';
-$L['user_order'] = '
+$L['user_order_mail'] = '
 Ваш заказ принят к рассмотрению. Информация о заказе:
-Заказчик: %1$s
-Сумма: %2$s р.
-E-mail: %3$s
-Адрес: %4$s
-Телефон: %5$s
-Дополнительно: %6$s.
+Номер заказа: {$id}
+Заказчик: {$payername}
+E-mail: {$payeremail}
+Адрес: {$payeraddr}
+Телефон: {$payerphone}
+{$payerother}
+Описание заказа:
+{$orderinfo}
+Сумма: {$total}
+Способ оплаты: {$payment}
+Способ доставки: {$delivery} ({$delivery_count})
+
 Спасибо за покупку!
 ';
 
+$L['user_order_info'] = "{\$num}. {\$title}({\$price}) х {\$count} = {\$total}\n";
+	
 ?>

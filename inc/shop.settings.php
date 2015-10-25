@@ -13,6 +13,9 @@ defined('COT_CODE') or die('Wrong URL');
 global $db_orders, $db_orders_desc, $db_x;
 $db_orders = (isset($db_orders)) ? $db_orders : $db_x . 'orders';
 $db_orders_desc = (isset($db_orders_desc)) ? $db_orders_desc : $db_x . 'orders_desc';
+$db_orders_payments = (isset($db_orders_payments)) ? $db_orders_payments : $db_x . 'orders_payments';
+$db_orders_delivery = (isset($db_orders_delivery)) ? $db_orders_delivery : $db_x . 'orders_delivery';
+$db_orders_delivery_prices = (isset($db_orders_delivery_prices)) ? $db_orders_delivery_prices : $db_x . 'orders_delivery_prices';
 
 $shopcfg['price'] = (!empty($cfg['plugin']['shop']['price'])) ? $cfg['plugin']['shop']['price'] : 'page_shop_price';
 $shopcfg['price_old'] = (!empty($cfg['plugin']['shop']['price_old'])) ? $cfg['plugin']['shop']['price_old'] : 'page_shop_price_old';
