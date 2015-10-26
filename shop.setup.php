@@ -5,7 +5,7 @@
 Code=shop
 Name=Shop
 Description=E-Shop Module for Cotonti
-Version=2.60
+Version=2.65
 Date=21-Sep-2015
 Author=esclkm
 Copyright=&copy; esclkm 2010 
@@ -23,7 +23,6 @@ email=11:string:::Administrator email
 cat=13:string::shop:Shop category
 conversion=50:text::USD|1/1|US Dollar|$ |2|:Currency Exchange
 noprice=51:radio::0:Catalog Mode
-testmode=99:radio::0:Test Mode
 [END_COT_EXT_CONFIG]
 ==================== */
 

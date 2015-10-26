@@ -19,19 +19,8 @@ require_once cot_langfile('shop', 'plug');
 require_once cot_incfile('page', 'module');
 require_once cot_incfile('forms');
 
-switch ($m)
+if(!in_array($m, array('cart', 'checkout', 'tools', 'completion')))
 {
-	case 'checkout':
-		require_once cot_incfile('shop', 'plug', 'checkout');
-		break;
-
-	case 'tools':
-		require_once cot_incfile('shop', 'plug', 'tools');
-		break;
-
-	default:
-		require_once cot_incfile('shop', 'plug', 'cart');
-		break;
+	$m = 'cart';
 }
-
-?>
+require_once cot_incfile('shop', 'plug', $m);

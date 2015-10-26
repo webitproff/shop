@@ -17,7 +17,6 @@ defined('COT_CODE') or die('Wrong URL.');
 $L['cfg_email'] = array('E-mail for notifications','(leave empty to use the system E-mail)');
 $L['cfg_cat'] = array('Shop category code');
 $L['cfg_conversion'] = array('Exchange rates');
-$L['cfg_testmode'] = array('Testmode','(turn off order placement)');
 $L['cfg_noprice'] = array('Работать в режиме каталога', 'У товаров не обязательны цены - обязательны описания');
 
 /**

@@ -16,6 +16,7 @@ if ($a == 'clear')
 {
 	unset($shop);
 	unset($_SESSION['shop']);
+	cot_redirect(cot_url('plug', 'e=shop', '', true));
 }
 if ($a == 'update')
 {
@@ -53,6 +54,8 @@ if ($a == 'update')
 		$shop['total'] += $shopping['total'];
 	}
 	$_SESSION['shop'] = $shop;
+	
+	cot_redirect(cot_url('plug', 'e=shop', '', true));
 }
 $jj = 0;
 if ((int)$shop['count'] > 0)
