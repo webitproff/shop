@@ -5,8 +5,8 @@
 Code=shop
 Name=Shop
 Description=E-Shop Module for Cotonti
-Version=2.50
-Date=21-Sep-2010
+Version=2.60
+Date=21-Sep-2015
 Author=esclkm
 Copyright=&copy; esclkm 2010 
 Notes=

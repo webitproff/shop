@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS cot_orders (
 			  `order_total` decimal(12,2) NOT NULL default '0',
 			  `order_apply` int(11) unsigned NOT NULL default '0',
 			  `order_payed` int(11) unsigned NOT NULL default '0',
+			  `order_canceled` int(11) unsigned NOT NULL default '0',
 			  `order_payername` varchar(255) collate utf8_unicode_ci NOT NULL default '',
 			  `order_payerphone` varchar(255) collate utf8_unicode_ci NOT NULL default '',
 			  `order_payeremail` varchar(255) collate utf8_unicode_ci NOT NULL default '',

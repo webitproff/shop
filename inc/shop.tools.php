@@ -113,6 +113,7 @@ if((int)$id > 0)
 
 	$odstate = ($row['order_apply'] > 0) ? 1 : 0;
 	$odstate = ($row['order_payed'] > 0) ? 2 : $odstate;
+	$odstate = ($row['order_canceled'] > 0) ? 3 : $odstate;
 	$t->assign(array(
 		'SHOP_PAYERNAME' => htmlspecialchars($row['order_payername']),
 		'SHOP_PAYERPHONE' => htmlspecialchars($row['order_payerphone']),
@@ -121,6 +122,17 @@ if((int)$id > 0)
 		'SHOP_PAYEROTHER' => htmlspecialchars($row['order_payerother']),
 		'SHOP_PAYERTOTAL' => cot_format_money($row['order_total'], $row['order_currency']),
 		'SHOP_PAYERTOTAL_DEF' => cot_format_money($row['order_total'], $shopdefcurr),
+		'SHOP_DELIVERY_TYPE' => $row['order_delivery_type'],
+		'SHOP_DELIVERY_DESC' => $row['order_delivery_desc'],
+		'SHOP_DELIVERY_PRICE_NUM' => $row['order_delivery_price'],
+		'SHOP_DELIVERY_PRICE' => cot_format_money($row['order_delivery_price'], $row['order_currency']),
+		'SHOP_DELIVERY_PRICE_DEF' => cot_format_money($row['order_delivery_price'], $shopdefcurr),
+		'SHOP_TRANSACTION_TYPE' => $row['order_transaction_type'],
+		'SHOP_TRANSACTION_DESC' => $row['order_transaction_desc'],
+		'SHOP_TRANSACTION_NUM' => $row['order_transaction_num'],
+		'SHOP_TRANSACTION_STATE' => $row['order_transaction_state'],
+		'SHOP_TRANSACTION_DATE' => $row['order_transaction_date'] ? cot_date('datetime_medium', $row['order_transaction_date']) : "",
+		'SHOP_TRANSACTION_UPDATE' => '',
 		'SHOP_DATE' => cot_date('datetime_medium',$row['order_date']),
 		'SHOP_ID' => htmlspecialchars($row['order_id']),
 		'SHOP_ORDERSTATE' => $odstate,
@@ -166,6 +178,7 @@ else
 		}
 		$odstate = ($row['order_apply'] > 0) ? 1 : 0;
 		$odstate = ($row['order_payed'] > 0) ? 2 : $odstate;
+		$odstate = ($row['order_canceled'] > 0) ? 3 : $odstate;
 		$t->assign(array(
 			'SHOP_ROW_PAYERNAME' => htmlspecialchars($row['order_payername']),
 			'SHOP_ROW_PAYERPHONE' => htmlspecialchars($row['order_payerphone']),
@@ -174,6 +187,17 @@ else
 			'SHOP_ROW_PAYEROTHER' => htmlspecialchars($row['order_payerother']),
 			'SHOP_ROW_PAYERTOTAL' => cot_format_money($row['order_total'], $row['order_currency']),
 			'SHOP_ROW_PAYERTOTAL_DEF' => cot_format_money($row['order_total'], $shopdefcurr),
+			'SHOP_ROW_DELIVERY_TYPE' => $row['order_delivery_type'],
+			'SHOP_ROW_DELIVERY_DESC' => $row['order_delivery_desc'],
+			'SHOP_ROW_DELIVERY_PRICE_NUM' => $row['order_delivery_price'],
+			'SHOP_ROW_DELIVERY_PRICE' => cot_format_money($row['order_delivery_price'], $row['order_currency']),
+			'SHOP_ROW_DELIVERY_PRICE_DEF' => cot_format_money($row['order_delivery_price'], $shopdefcurr),
+			'SHOP_ROW_TRANSACTION_TYPE' => $row['order_transaction_type'],
+			'SHOP_ROW_TRANSACTION_DESC' => $row['order_transaction_desc'],
+			'SHOP_ROW_TRANSACTION_NUM' => $row['order_transaction_num'],
+			'SHOP_ROW_TRANSACTION_STATE' => $row['order_transaction_state'],
+			'SHOP_ROW_TRANSACTION_DATE' => $row['order_transaction_date'] ? cot_date('datetime_medium', $row['order_transaction_date']) : "",
+			'SHOP_ROW_TRANSACTION_UPDATE' => '',
 			'SHOP_ROW_DATE' => cot_date('datetime_medium',$row['order_date']),
 			'SHOP_ROW_ORDERSTATE' => $odstate,
 			'SHOP_ROW_ID' => htmlspecialchars($row['order_id']),

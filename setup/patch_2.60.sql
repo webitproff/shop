@@ -1,0 +1,1 @@
+ALTER TABLE `cot_orders` ADD COLUMN `order_canceled` int(11) unsigned NOT NULL default '0';

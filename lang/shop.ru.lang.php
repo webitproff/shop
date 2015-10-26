@@ -122,12 +122,15 @@ $L['shop_address'] = "Адрес";
 $L['shop_order_state0'] = "Заказ не принят";
 $L['shop_order_state1'] = "Заказ принят";
 $L['shop_order_state2'] = "Заказ оплачен";
+$L['shop_order_state3'] = "Оплата отменена";
 
 $L['shop_confirm'] = "Подтвердить";
 $L['shop_confirmed'] = "Подтверждено";
 $L['shop_unconfirm'] = "Снять отметку подтверждено";
 
+$L['shop_canceled'] = "Отменено";
 $L['shop_paid'] = "Оплачено";
+
 $L['shop_unpaid'] = "Снять отметку оплачено";
 
 $L['shop_buyer_info'] = "Информация о покупателе";

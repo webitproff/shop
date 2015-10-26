@@ -85,11 +85,25 @@
 				</tr>
 				<!-- ENDIF -->
 				<tr>
+					<td>{PHP.L.shop_delivery}:</td>
+					<td>{SHOP_DELIVERY_DESC} <!-- IF {SHOP_ROW_DELIVERY_PRICE} -->({SHOP_ROW_DELIVERY_PRICE})<!-- ENDIF --></td>
+				</tr>
+				<tr>
+					<td>{PHP.L.shop_payment}:</td>
+					<td>
+						{SHOP_TRANSACTION_DESC}
+						<!-- IF {SHOP_TRANSACTION_NUM} --><p> #{SHOP_TRANSACTION_NUM}</p><!-- ENDIF -->
+						<!-- IF {SHOP_TRANSACTION_DATE} --><p> {PHP.L.Date}: {SHOP_TRANSACTION_DATE}</p><!-- ENDIF -->
+						<!-- IF {SHOP_TRANSACTION_STATE} --><p> {PHP.L.Status}: {SHOP_TRANSACTION_STATE}</p><!-- ENDIF -->
+					</td>
+				</tr>
+				<tr>
 					<td>{PHP.L.Status}:</td>
 					<td>
 						<!-- IF {SHOP_ORDERSTATE} == 0 --><p>{PHP.L.shop_order_state0}</p><!-- ENDIF -->
 						<!-- IF {SHOP_ORDERSTATE} == 1 --><p>{PHP.L.shop_order_state1} ({SHOP_VALIDATOR_NAME})</p><!-- ENDIF -->
 						<!-- IF {SHOP_ORDERSTATE} == 2 --><p>{PHP.L.shop_order_state1} ({SHOP_VALIDATOR_NAME})<br />{PHP.L.shop_order_state2} ({SHOP_VALIDATOR2_NAME})</p><!-- ENDIF -->
+						<!-- IF {SHOP_ORDERSTATE} == 3 --><p>{PHP.L.shop_order_state3}</p><!-- ENDIF -->
 					</td>
 				</tr>
 <!-- IF {PHP.usr.maingrp} == 5 -->
